@@ -11,7 +11,8 @@ app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
 @app.event("app_mention")
 def handle_mention(event, say):
     user = event["user"]
-    say(f"Hello <@{user}>!")
+    thread_ts = event["ts"]
+    say(thread_ts=thread_ts, text=f"Hello <@{user}>!")
 
 # ソケットモードハンドラーを使ってアプリを起動します
 if __name__ == "__main__":
